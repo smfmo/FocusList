@@ -1,7 +1,7 @@
 # 📌 FocusList - Gerenciador de Tarefas com Autenticação
 
 <p align="center">
-    <img src="visualEvidency/focuslist.png" alt="FocusList" width="150"/> <br>
+    <img src="visualEvidency/focuslist.png" alt="FocusList" width="220"/> <br>
     <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring Boot" width="70" />
     <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" width="70" />
 </p>
@@ -43,3 +43,40 @@ O projeto segue o padrão **MVC (Model - View - Controller)**, promovendo separa
 
 ## 📁 Estrutura de Pastas
 
+```
+src/
+├── main/
+│ ├── java/
+│ │ └── com.architeturemcv.login
+│ │ ├── configuration/
+│ │ ├── controller/
+│ │ └── dtos/
+│ │ └── mappers/
+│ │ ├── model/
+│ │ ├── repository/
+│ │ ├── security
+│ │ ├── service/
+│ └── resources/
+│ ├── static/
+│ ├── templates/
+│ └── application.yml
+```
+## Evidências visuais
+
+- **tela de cadastro:**
+
+![telaCadastro.png](visualEvidency/telaCadastro.png)
+
+- **tela de login**
+
+![telaLogin.png](visualEvidency/telaLogin.png)
+
+- **tela de tarefas**
+![talaTarefas.png](visualEvidency/talaTarefas.png)
+
+- **nova tarefa**
+![novaTarefa.png](visualEvidency/novaTarefa.png)
+
+## Desenvolvimento
+
+- Samuel Monteiro Ferreira
