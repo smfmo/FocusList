@@ -1,7 +1,7 @@
 # 📌 FocusList - Gerenciador de Tarefas com Autenticação
 
 <p align="center">
-    <img src="visualEvidency/focuslist.png" alt="FocusList" width="250"/><br>
+    <img src="visualEvidency/focuslist.png" alt="FocusList" width="150"/> <br>
     <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring Boot" width="70" />
     <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" width="70" />
 </p>
