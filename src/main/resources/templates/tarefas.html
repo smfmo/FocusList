@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minhas Tarefas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="/images/focuslist.ico">
+    <style>
+        body {
+            background-color: #eff0f0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .task-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .task-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .task-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #343a40;
+            border-radius: 6px;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        .task-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .task-item.completed {
+            border-left-color: #28a745;
+            opacity: 0.8;
+        }
+        .task-actions {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .task-item:hover .task-actions {
+            opacity: 1;
+        }
+        .btn-task {
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="task-container">
+        <div class="task-header text-center">
+            <h3 class="mb-3">Minhas Tarefas</h3>
+            <p class="text-muted">Bem-vindo, <span th:text="${#authentication.getName()}"></span></p>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div></div>
+                <button class="btn btn-dark btn-task" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                    <i class="bi bi-plus"></i> Nova Tarefa
+                </button>
+            </div>
+        </div>
+
+        <div class="task-list">
+            <div th:each="tarefa : ${tarefas}"
+                 th:classappend="${tarefa.concluida} ? 'completed' : ''"
+                 class="task-item">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="flex-grow-1">
+                        <h5 th:classappend="${tarefa.concluida} ? 'text-decoration-line-through' : ''"
+                            th:text="${tarefa.titulo}">Título da Tarefa</h5>
+                        <p class="text-muted mb-2" th:text="${tarefa.descricao}">Descrição da tarefa</p>
+                        <small class="text-muted"
+                               th:text="'Criada em: ' + ${#temporals.format(tarefa.data_criacao, 'dd/MM/yyyy HH:mm')}">
+                        </small>
+                    </div>
+                    <div class="task-actions d-flex gap-2">
+                        <form th:action="@{/tarefas/status}" method="post">
+                            <input type="hidden" name="id" th:value="${tarefa.id}">
+                            <button type="submit" class="btn btn-sm"
+                                    th:classappend="${tarefa.concluida} ? 'btn-outline-secondary' : 'btn-outline-success'">
+                                <i th:classappend="${tarefa.concluida} ? 'bi-arrow-counterclockwise' : 'bi-check'"></i>
+                            </button>
+                        </form>
+
+                        <form th:action="@{/tarefas/excluir}" method="post">
+                            <input type="hidden" name="id" th:value="${tarefa.id}">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${#lists.isEmpty(tarefas)}" class="text-center py-4">
+                <i class="bi bi-inbox" style="font-size: 2rem; color: #ddd;"></i>
+                <p class="text-muted mt-2">Nenhuma tarefa encontrada</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newTaskModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nova Tarefa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form th:action="@{/tarefas}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Título</label>
+                        <input type="text" class="form-control" name="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea class="form-control" name="descricao" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-dark">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

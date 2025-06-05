@@ -1,0 +1,21 @@
+ARQUIVO DESTINADO PARA CRIAÇÃO E MODIFICAÇÃO DAS ENTIDADES;
+
+-- criação da tabela de usuários --
+create table usuario(
+    id uuid not null primary key,
+    login varchar(20) not null unique,
+    senha varchar(300) not null,
+    roles varchar[]
+);
+
+-- criação da tabela de tarefas --
+CREATE TABLE tarefas (
+    id UUID PRIMARY KEY,
+    titulo VARCHAR(255),
+    descricao TEXT,
+    data_criacao DATE NOT NULL,
+    concluida BOOLEAN NOT NULL,
+    usuario_id UUID,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
