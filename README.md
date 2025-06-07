@@ -72,7 +72,7 @@ src/
 ![telaLogin.png](visualEvidency/telaLogin.png)
 
 - **tela de tarefas**
-![talaTarefas.png](visualEvidency/talaTarefas.png)
+![talaTarefas.png](visualEvidency/telaTarefas.png)
 
 - **nova tarefa**
 ![novaTarefa.png](visualEvidency/novaTarefa.png)

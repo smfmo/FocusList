@@ -57,6 +57,11 @@
 <body>
 <div class="container">
     <div class="task-container">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-outline-danger">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </button>
+        </form>
         <div class="task-header text-center">
             <h3 class="mb-3">Minhas Tarefas</h3>
             <p class="text-muted">Bem-vindo, <span th:text="${#authentication.getName()}"></span></p>
