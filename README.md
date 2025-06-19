@@ -77,6 +77,3 @@ src/
 - **nova tarefa**
 ![novaTarefa.png](visualEvidency/novaTarefa.png)
 
-## Desenvolvimento
-
-- Samuel Monteiro Ferreira
