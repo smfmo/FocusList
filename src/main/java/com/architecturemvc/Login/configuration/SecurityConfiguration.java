@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 @Configuration
-public class SecutiryConfiguration {
+public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity securityConfig) throws Exception {
         return securityConfig

@@ -1,8 +1,10 @@
 ARQUIVO DESTINADO PARA CRIAÇÃO E MODIFICAÇÃO DAS ENTIDADES;
 
 -- criação da tabela de usuários --
-create table usuario(
+CREATE TABLE usuario(
     id uuid not null primary key,
+    email VARCHAR(255) NOT NULL,
+    data_cadastro TIMESTAMP WITH TIME ZONE,
     login varchar(20) not null unique,
     senha varchar(300) not null,
     roles varchar[]
@@ -13,7 +15,7 @@ CREATE TABLE tarefas (
     id UUID PRIMARY KEY,
     titulo VARCHAR(255),
     descricao TEXT,
-    data_criacao DATE NOT NULL,
+    data_criacao TIMESTAMP,
     concluida BOOLEAN NOT NULL,
     usuario_id UUID,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)

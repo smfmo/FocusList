@@ -2,7 +2,6 @@ package com.architecturemvc.Login.controller;
 
 import com.architecturemvc.Login.controller.dtos.TarefasDto;
 import com.architecturemvc.Login.controller.mappers.TarefasMapper;
-import com.architecturemvc.Login.model.Tarefas;
 import com.architecturemvc.Login.model.Usuario;
 import com.architecturemvc.Login.service.TarefasService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.UUID;
 
 @Controller

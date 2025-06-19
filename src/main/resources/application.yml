@@ -4,7 +4,7 @@ spring:
   datasource:
     username: postgres
     password: 123456
-    url: jdbc:postgresql://localhost:5432/FocusList
+    url: jdbc:postgresql://localhost:5433/focuslistdb
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -13,13 +13,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
   web:
     resources:
       static-locations:
